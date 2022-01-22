@@ -19,7 +19,11 @@ const Model = () => {
 
 const Loader = () => {
   const { progress } = useProgress();
-  return <Html center>{progress} % loaded</Html>;
+  return (
+    <Html center>
+      <div className="loading">{progress} % loaded</div>
+    </Html>
+  );
 };
 
 const App = () => {

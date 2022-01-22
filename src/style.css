@@ -72,3 +72,9 @@ h1 {
   left: 0;
   /* background-color: burlywood; */
 }
+
+.loading {
+  width: max-content;
+  background-color: yellow;
+  padding: 5%;
+}
