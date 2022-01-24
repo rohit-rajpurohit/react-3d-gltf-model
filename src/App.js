@@ -1,44 +1,27 @@
-import React, { useState, useRef } from "react";
-import { useLoader } from "@react-three/fiber";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import React, { useRef } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Stage } from "@react-three/drei";
 import { Suspense } from "react";
 import { Html, useProgress } from "@react-three/drei";
-import { useSpring, animated, config } from "@react-spring/three";
+// import { useSpring, animated, config } from "@react-spring/three";
+import Model from "./Model";
 import "./style.css";
 
-const Model = () => {
-  const gltf = useLoader(GLTFLoader, "./flower_pool.gltf");
-  return (
-    <>
-      <primitive object={gltf.scene} scale={10} />
-    </>
-  );
-};
-
-const Loader = () => {
-  const { progress } = useProgress();
-  return (
-    <Html center>
-      <div className="loading">{progress} % loaded</div>
-    </Html>
-  );
-};
-
 const App = () => {
+  const ref = useRef();
+  const Loader = () => {
+    const { progress } = useProgress();
+    return (
+      <Html center>
+        <div className="loading">{progress} % loaded</div>
+      </Html>
+    );
+  };
+
   return (
     <>
-      <div className="bg">
-        <h1>Medeival Fantasy Lore</h1>
-      </div>
-      {/* <div className="container"> */}
-      <Canvas
-        concurrent
-        colorManagement
-        camera={{ position: [100, 30, 200], fov: 20 }}
-        shadowMap
-      >
+      <div className="bg"></div>
+      <Canvas concurrent colorManagement camera={{ fov: 50 }} shadowMap>
         <ambientLight intensity={0.5} />
         <pointLight intensity={0.5} position={[-10, -25, -10]} />
         <spotLight
@@ -53,17 +36,23 @@ const App = () => {
         />
         <Suspense fallback={<Loader />}>
           <OrbitControls
-            // autoRotate
+            autoRotate
             enablePan={true}
             enableZoom={true}
             enableDamping
             dampingFactor={1}
             rotateSpeed={0.9}
           />
-          <Model />
+          <Stage
+            controls={ref}
+            preset="rembrandt"
+            intensity={1}
+            environment="city"
+          >
+            <Model />
+          </Stage>
         </Suspense>
       </Canvas>
-      {/* </div> */}
     </>
   );
 };
