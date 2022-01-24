@@ -19,38 +19,7 @@ body {
   background: #171717;
 }
 
-h1 {
-  position: absolute;
-  top: 4rem;
-  left: 20%;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-weight: 800;
-  font-size: 4.5em;
-  left: 20%;
-  /* transform: translate3d(-50%, 0, 0); */
-  margin: 0;
-  color: whitesmoke;
-  line-height: 0.8em;
-  text-align: center;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 1px peru, 1px 2px 1px peru,
-    1px 6px 6px rgba(16, 16, 16, 0.4);
-  animation: 1.5s head-style ease-in-out;
-}
-
 /* #ce93d8 */
-
-@keyframes head-style {
-  from {
-    margin-left: -100%;
-    height: 300%;
-  }
-
-  to {
-    left: 20%;
-    height: 100%;
-  }
-}
 
 .bg {
   position: absolute;
@@ -63,14 +32,6 @@ h1 {
   );
   /* background-color: #0093e9;
   background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%); */
-}
-.container {
-  position: absolute;
-  height: 60vh;
-  width: 50vw;
-  top: 30%;
-  left: 0;
-  /* background-color: burlywood; */
 }
 
 .loading {
